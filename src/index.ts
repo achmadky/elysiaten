@@ -15,7 +15,7 @@ const corsOptions = {
 const app = new Elysia();
 
 //CORS Middleware
-app.use(cors(corsOptions));
+app.use(cors());
 
 // API endpoint to get food info by name
 app.get('/api/food', async ({ query }) => {
