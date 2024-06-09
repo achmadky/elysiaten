@@ -1,17 +1,18 @@
 # Use the official Bun image
-FROM jarredsumner/bun:latest
+FROM oven/bun
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy all files to the container
-COPY . .
-
-# Install dependencies
+# Copy package.json and install dependencies
+COPY package.json ./
 RUN bun install
 
-# Expose the port your app runs on
+# Copy the rest of the application code
+COPY . .
+
+# Expose the application port
 EXPOSE 3000
 
-# Command to run the app
-CMD ["bun", "index.ts"]
+# Start the application
+CMD ["bun", "run", "api/index.ts"]
